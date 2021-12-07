@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "moduleResolution": "node",
+    "target": "es2020",
+    "module": "es6",
+    "baseUrl": ".src/",
+    "paths": {
+      "utils/*": ["utils/*"],
+      "config/*": ["config/*"],
+      "constants/*": ["constants/*"],
+      "database/*": ["database/*"],
+      "docs/*": ["docs/*"],
+      "controllers/*": ["controllers/*"],
+      "middlewares/*": ["middlewares/*"],
+      "routes/*": ["routes/*"],
+      "services/*": ["services/*"],
+      "validation/*": ["validation/*"]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules/",
+    "src/build",
+    ".vscode",
+    "coverage",
+    ".npm",
+    ".yarn"
+  ],
+  "typeAcquisition": {
+    "enable": true,
+    "include": ["node"]
+  }
+}
