@@ -2,7 +2,7 @@
 
 ## API Documentation
 
-- [Swagger Documentation on Heroku](https://twitee-backend.herokuapp.com/api/docs/)
+- [Swagger Documentation on Heroku](https://aiyeola-twitee-backend.herokuapp.com/api/docs/)
 
 ## Technologies Used
 
