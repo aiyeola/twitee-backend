@@ -26,8 +26,8 @@
   "produces": ["application/json"],
   "tags": [
     {
-      "name": "User",
-      "description": "User Endpoints"
+      "name": "Auth",
+      "description": "Auth Endpoints"
     }
   ],
   "paths": {}

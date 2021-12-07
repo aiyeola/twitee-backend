@@ -1,0 +1,71 @@
+{
+  "post": {
+    "tags": ["Auth"],
+    "summary": "Sign up a user",
+    "description": "Endpoint for creating a user",
+    "operationId": "addUser",
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "parameters": [
+      {
+        "name": "Create Account",
+        "in": "body",
+        "description": "To create a new user provide the following",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "janedoe@apple.com"
+            },
+            "password": {
+              "type": "string",
+              "example": "Root123#"
+            }
+          }
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "User created",
+        "examples": {
+          "application/json": {
+            "status": 201,
+            "message": "New user has been created successfully",
+            "data": {
+              "id": 9,
+              "email": "janedoe@apple.com",
+              "name": "janedoe",
+              "createdAt": "2021-12-07T21:40:23.155Z",
+              "userToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJ2aWN0b3IuZGV2ZWxvcGVyQGJlcmVuaWEuY29tIiwiaWF0IjoxNjM4OTEzMjIzLCJleHAiOjE2Mzg5OTk2MjN9.E1Dco6xTkwFJ2Azgvb9VM6aw1eqxgWakE9GO-mIn7UQ",
+              "onBoardNewUser": {
+                "message": "onboard mail sent"
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Invalid input",
+        "examples": {
+          "application/json": {
+            "data": [
+              {
+                "status": 422,
+                "message": "\"email\" is required",
+                "error": "Validation Error"
+              },
+              {
+                "status": 422,
+                "message": "Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)",
+                "error": "Validation Error"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
