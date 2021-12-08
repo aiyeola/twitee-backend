@@ -3,7 +3,7 @@
     "tags": ["Auth"],
     "summary": "Sign in a user",
     "description": "Endpoint for signing in a user",
-    "operationId": "loginUser",
+    "operationId": "login-user",
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "parameters": [

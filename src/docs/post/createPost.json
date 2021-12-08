@@ -1,0 +1,64 @@
+{
+  "post": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "path": "/post",
+    "tags": ["Post"],
+    "summary": "Make a post",
+    "description": "End point for posting a twit",
+    "operationId": "create-post",
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "parameters": [
+      {
+        "name": "Create Post",
+        "in": "body",
+        "description": "To create a post (Twit)",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "post": {
+              "type": "string",
+              "example": "This is a sample post, fun things I do with JavaScript"
+            }
+          }
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Create a post(twit)",
+        "examples": {
+          "application/json": {
+            "status": 200,
+            "message": "twit post created",
+            "data": {
+              "id": 2,
+              "post": "This is a sample post, fun things I do with JavaScript",
+              "userId": 9,
+              "updatedAt": "2021-12-08T10:25:31.097Z",
+              "createdAt": "2021-12-08T10:25:31.097Z"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Invalid or Expired token used",
+        "examples": {
+          "application/json": {
+            "status": 401,
+            "message": "Invalid or expired token",
+            "error": "Authentication Error"
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+}

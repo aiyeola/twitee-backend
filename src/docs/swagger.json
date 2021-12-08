@@ -3,15 +3,15 @@
   "info": {
     "version": "1.0.0",
     "title": "twitee-backend",
-    "description": "Assesment Project"
+    "description": "Assessment Project"
   },
   "basePath": "/api/v1/",
   "schemes": ["https", "http"],
   "securityDefinitions": {
     "Bearer": {
       "type": "apiKey",
-      "name": "Authorization",
-      "in": "header"
+      "in": "header",
+      "name": "Authorization"
     }
   },
   "servers": [
@@ -28,6 +28,10 @@
     {
       "name": "Auth",
       "description": "Auth Endpoints"
+    },
+    {
+      "name": "Post",
+      "description": "Post Endpoints"
     }
   ],
   "paths": {}
