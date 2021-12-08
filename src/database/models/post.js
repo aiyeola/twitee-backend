@@ -28,6 +28,10 @@ export default (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
     });
+    Posts.belongsTo(models.Users, {
+      foreignKey: 'userId',
+      as: 'user',
+    });
   };
   return Posts;
 };

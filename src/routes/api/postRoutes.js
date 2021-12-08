@@ -25,4 +25,9 @@ router
   .delete(verify, commentValidation.validateId, Access.isOwner, Post.deletePost)
   .all(method);
 
+router
+  .route('/:id/like')
+  .patch(verify, commentValidation.validateId, Post.likeOrUnlike)
+  .all(method);
+
 export default router;

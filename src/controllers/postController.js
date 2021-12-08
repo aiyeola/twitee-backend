@@ -1,6 +1,7 @@
 import Response from 'utils/response';
 import postService from 'services/postService';
 import commentService from 'services/commentService';
+import likeService from 'services/likeService';
 
 export default class User {
   static addPost = async (req, res, next) => {
@@ -65,6 +66,41 @@ export default class User {
         200,
         'post (twit) deleted successfully',
       );
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  static likeOrUnlike = async (req, res, next) => {
+    const {
+      user: { id: userId },
+      params: { id: postId },
+    } = req;
+
+    try {
+      const exist = await postService.findPost({
+        id: postId,
+      });
+
+      if (!exist) {
+        return Response.notFoundError(res, 'post does not exist');
+      }
+
+      const like = { userId, postId };
+      const alreadyLiked = await likeService.countLikes(like);
+      const likes = await likeService.countLikes({ postId });
+
+      if (!alreadyLiked) {
+        await likeService.like(like);
+        return Response.customResponse(res, 200, `successfully liked post`, {
+          likes: likes + 1,
+        });
+      } else {
+        await likeService.unlike(like);
+        return Response.customResponse(res, 200, `successfully unliked post`, {
+          likes: likes - 1,
+        });
+      }
     } catch (error) {
       return next(error);
     }

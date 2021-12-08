@@ -1,6 +1,6 @@
 import database from 'database/models';
 
-const { Posts, Comments, Likes } = database;
+const { Posts, Comments, Likes, Users } = database;
 
 class PostService {
   static async createPost(post) {
@@ -17,7 +17,7 @@ class PostService {
     try {
       const data = await Posts.findAll({
         subQuery: false,
-        attributes: ['id', 'userId', 'post'],
+        attributes: ['id', 'userId', 'post', 'createdAt'],
         include: [
           {
             model: Comments,
@@ -28,6 +28,11 @@ class PostService {
             model: Likes,
             as: 'likes',
             attributes: ['id'],
+          },
+          {
+            model: Users,
+            as: 'user',
+            attributes: ['name', 'email'],
           },
         ],
         raw: false,
