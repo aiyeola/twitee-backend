@@ -14,6 +14,8 @@ export default {
   number: Joi.number().min(1).required(),
   nameOptional: Joi.string().alphanum().min(3).max(30).optional(),
   post: Joi.string().min(3).max(255).required(),
+  comment: Joi.string().min(3).max(255).required(),
+  id: Joi.number().integer().min(1).required(),
   url: Joi.string().uri().required(),
   array: Joi.array().required(),
   boolean: Joi.boolean().required(),

@@ -24,6 +24,7 @@ export default (sequelize, DataTypes) => {
     });
     Posts.hasMany(models.Comments, {
       foreignKey: 'postId',
+      as: 'comments',
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
     });
