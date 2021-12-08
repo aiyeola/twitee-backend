@@ -1,16 +1,16 @@
 {
   "post": {
     "tags": ["Auth"],
-    "summary": "Sign up a user",
-    "description": "Endpoint for creating a user",
-    "operationId": "addUser",
+    "summary": "Sign in a user",
+    "description": "Endpoint for signing in a user",
+    "operationId": "loginUser",
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "parameters": [
       {
-        "name": "Create Account",
+        "name": "Log in",
         "in": "body",
-        "description": "To create a new user provide the following",
+        "description": "To sign a user provide the following",
         "required": true,
         "schema": {
           "type": "object",
@@ -29,20 +29,17 @@
     ],
     "responses": {
       "201": {
-        "description": "User created",
+        "description": "User login",
         "examples": {
           "application/json": {
-            "status": 201,
-            "message": "New user has been created successfully",
+            "status": 200,
+            "message": "User signed in successfully",
             "data": {
               "id": 9,
               "name": "janedoe",
               "email": "janedoe@apple.com",
-              "createdAt": "2021-12-07T21:40:23.155Z",
-              "userToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJ2aWN0b3IuZGV2ZWxvcGVyQGJlcmVuaWEuY29tIiwiaWF0IjoxNjM4OTEzMjIzLCJleHAiOjE2Mzg5OTk2MjN9.E1Dco6xTkwFJ2Azgvb9VM6aw1eqxgWakE9GO-mIn7UQ",
-              "onBoardNewUser": {
-                "message": "onboard mail sent"
-              }
+              "updatedAt": "2021-12-07T21:40:23.155Z",
+              "userToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJ2aWN0b3IuZGV2ZWxvcGVyQGJlcmVuaWEuY29tIiwibmFtZSI6InZpY3Rvci5kZXZlbG9wZXIiLCJpYXQiOjE2Mzg5NDU2NzQsImV4cCI6MTYzOTAzMjA3NH0.lMaSlB8G1OL814-JO7A7waRyq3RcsdpSif3VIGPafc4"
             }
           }
         }
@@ -56,14 +53,21 @@
                 "status": 422,
                 "message": "\"email\" is required",
                 "error": "Validation Error"
-              },
-              {
-                "status": 422,
-                "message": "Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)",
-                "error": "Validation Error"
               }
             ]
           }
+        }
+      },
+      "401": {
+        "description": "Unauthorized",
+        "examples": {
+          "application/json": [
+            {
+              "status": 401,
+              "message": "Invalid email or password",
+              "error": "Authentication Error"
+            }
+          ]
         }
       }
     }

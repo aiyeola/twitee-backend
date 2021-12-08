@@ -57,4 +57,38 @@ export default class User {
       return next(error);
     }
   };
+
+  static login = async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+
+      const userExists = await UserService.findUser({ email });
+
+      if (!userExists) {
+        return Response.authenticationError(
+          res,
+          'Invalid email or password entered',
+        );
+      }
+
+      const user = userExists.dataValues;
+
+      const match = await Password.checkPasswordMatch(password, user.password);
+      if (!match) {
+        return Response.authenticationError(res, 'Invalid email or password');
+      }
+      user.userToken = await SessionManager.createSession(user, res);
+      delete user.password;
+      delete user.createdAt;
+
+      return Response.customResponse(
+        res,
+        200,
+        'User signed in successfully',
+        user,
+      );
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

@@ -13,7 +13,7 @@ router
 
 router
   .route('/login')
-  .post(userValidation.validateLogin, User.createUser)
+  .post(userValidation.validateLogin, User.login)
   .all(method);
 
 export default router;
