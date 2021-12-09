@@ -4,7 +4,7 @@
 
 - [Swagger Documentation on Heroku](https://aiyeola-twitee-backend.herokuapp.com/api/docs/)
 
-Kindly note when using the API docs, provide the token value like so "Bearer _token_
+Kindly note when using the API docs, provide the token value like so "Bearer _token_"
 
 ## Technologies Used
 
