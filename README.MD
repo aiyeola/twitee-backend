@@ -4,7 +4,7 @@
 
 - [Swagger Documentation on Heroku](https://aiyeola-twitee-backend.herokuapp.com/api/docs/)
 
-Kindly note when using the API docs, provide the token value like so "Bearer <token>"
+Kindly note when using the API docs, provide the token value like so "Bearer --token--"
 
 ## Technologies Used
 
@@ -14,7 +14,8 @@ Kindly note when using the API docs, provide the token value like so "Bearer <to
 - Swagger for API Documentation
 - Heroku For Hosting
 
-# Special things about this project
+## Special things about this project
 
 - Implemented internal logging tool using winston
 - Set up CI/CD using GitHub Actions
+- Using babel as module resolver to implement path alias
