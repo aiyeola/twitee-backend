@@ -1,0 +1,67 @@
+{
+  "delete": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "path": "/post/{id}",
+    "tags": ["Post"],
+    "summary": "delete a post",
+    "description": "End point deleting a post",
+    "operationId": "delete-post",
+    "consumes": [],
+    "produces": ["application/json"],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "type": "integer",
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "twit deleted successfully",
+        "examples": {
+          "application/json": {
+            "status": 200,
+            "message": "post (twit) deleted successfully",
+            "data": null
+          }
+        }
+      },
+      "401": {
+        "description": "Invalid or Expired token used",
+        "examples": {
+          "application/json": {
+            "status": 401,
+            "message": "Invalid or expired token",
+            "error": "Authentication Error"
+          }
+        }
+      },
+      "404": {
+        "examples": {
+          "application/json": {
+            "status": 404,
+            "message": "Enter a valid id",
+            "error": "Not Found"
+          }
+        }
+      },
+      "403": {
+        "examples": {
+          "application/json": {
+            "status": 403,
+            "message": "You don't have rights to perform this action",
+            "error": "Authorization Error"
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+}

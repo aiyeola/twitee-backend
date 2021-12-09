@@ -33,10 +33,12 @@ export default class User {
       params: { id },
       user: { id: userId },
     } = req;
+    console.log('id: ', id);
 
     const rawData = req.body;
     rawData.userId = userId;
-    rawData.postId = id;
+    rawData.postId = parseInt(id, 10);
+    console.log('rawData: ', rawData);
     const addedPost = await commentService.addCommentToPost(rawData);
 
     try {

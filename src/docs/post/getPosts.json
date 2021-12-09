@@ -1,0 +1,89 @@
+{
+  "get": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "path": "/post",
+    "tags": ["Post"],
+    "summary": "Get all posts",
+    "description": "End point for getting all posts",
+    "operationId": "get-posts",
+    "produces": ["application/json"],
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Comment on a post(twit)",
+        "examples": {
+          "application/json": {
+            "status": 200,
+            "message": "all twit posts",
+            "data": [
+              {
+                "id": 5,
+                "userId": 9,
+                "post": "I'm trying out new stuff",
+                "createdAt": "2021-12-08T20:31:04.506Z",
+                "comments": [],
+                "likes": [],
+                "user": {
+                  "name": "victor.developer",
+                  "email": "victor.developer@berenia.com"
+                }
+              },
+              {
+                "id": 4,
+                "userId": 10,
+                "post": "This is a sample post, fun things I do with JavaScript",
+                "createdAt": "2021-12-08T11:14:39.299Z",
+                "comments": [
+                  {
+                    "id": 3,
+                    "userId": 9,
+                    "comment": "Now this is post I like, I love JS too"
+                  },
+                  {
+                    "id": 2,
+                    "userId": 9,
+                    "comment": "Now this is post I like, I love JS too"
+                  }
+                ],
+                "likes": [],
+                "user": {
+                  "name": "janedoe",
+                  "email": "janedoe@apple.com"
+                }
+              },
+              {
+                "id": 3,
+                "userId": 10,
+                "post": "This is a sample post, fun things I do with JavaScript",
+                "createdAt": "2021-12-08T10:45:33.662Z",
+                "comments": [],
+                "likes": [],
+                "user": {
+                  "name": "janedoe",
+                  "email": "janedoe@apple.com"
+                }
+              }
+            ]
+          }
+        },
+        "401": {
+          "description": "Invalid or Expired token used",
+          "examples": {
+            "application/json": {
+              "status": 401,
+              "message": "Invalid or expired token",
+              "error": "Authentication Error"
+            }
+          }
+        },
+        "500": {
+          "description": "Internal server error"
+        }
+      }
+    }
+  }
+}

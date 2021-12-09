@@ -14,4 +14,7 @@ Kindly note when using the API docs, provide the token value like so "Bearer <to
 - Swagger for API Documentation
 - Heroku For Hosting
 
-# special things about this project
+# Special things about this project
+
+- Implemented internal logging tool using winston
+- Set up CI/CD using GitHub Actions

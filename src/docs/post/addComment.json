@@ -1,0 +1,70 @@
+{
+  "post": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "path": "/post/{id}/comment",
+    "tags": ["Post"],
+    "summary": "Add a comment to a post",
+    "description": "End point for commenting on a twit",
+    "operationId": "add-comment",
+    "produces": ["application/json"],
+    "parameters": [
+      {
+        "name": "Comment on a post",
+        "in": "body",
+        "description": "To comment on a post (Twit)",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "comment": {
+              "type": "string",
+              "example": "Now this is post I like, I love JS too"
+            }
+          }
+        }
+      },
+      {
+        "in": "path",
+        "name": "id",
+        "type": "integer",
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Comment on a post(twit)",
+        "examples": {
+          "application/json": {
+            "status": 200,
+            "message": "comment added to post (twit)",
+            "data": {
+              "id": 3,
+              "comment": "Now this is post I like, I love JS too",
+              "userId": 9,
+              "postId": 4,
+              "updatedAt": "2021-12-08T20:18:21.973Z",
+              "createdAt": "2021-12-08T20:18:21.973Z"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Invalid or Expired token used",
+        "examples": {
+          "application/json": {
+            "status": 401,
+            "message": "Invalid or expired token",
+            "error": "Authentication Error"
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+}

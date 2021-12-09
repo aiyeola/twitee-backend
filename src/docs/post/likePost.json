@@ -1,0 +1,51 @@
+{
+  "patch": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "tags": ["Post"],
+    "path": "/post/{id}/like",
+    "summary": "like/unlike a post",
+    "description": "Endpoint for liking/unliking a post",
+    "operationId": "like-unlike-post",
+    "consumes": [],
+    "produces": ["application/json"],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "type": "integer",
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "post liked/unliked",
+        "examples": {
+          "application/json": {
+            "status": "200",
+            "message": "successfully liked post",
+            "data": {
+              "likes": 1
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Invalid or expired token",
+        "examples": {
+          "application/json": {
+            "status": 401,
+            "message": "Invalid or expired token",
+            "error": "Authentication Error"
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+}
