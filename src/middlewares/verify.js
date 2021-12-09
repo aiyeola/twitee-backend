@@ -6,9 +6,9 @@ const verify = async (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
 
     const payload = await SessionManager.decodeToken({ token });
-    const result = SessionManager.checkToken(payload.email);
+    const result = await SessionManager.checkToken(payload.email);
 
-    if (result === 'null') {
+    if (result === null) {
       return Response.authenticationError(res, 'User not logged in');
     }
 

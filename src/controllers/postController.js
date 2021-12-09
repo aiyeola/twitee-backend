@@ -18,7 +18,7 @@ export default class User {
     }
   };
 
-  static getPosts = async (req, res, next) => {
+  static getPosts = async (_, res, next) => {
     const posts = await postService.getAllPosts();
 
     try {
@@ -33,12 +33,10 @@ export default class User {
       params: { id },
       user: { id: userId },
     } = req;
-    console.log('id: ', id);
 
     const rawData = req.body;
     rawData.userId = userId;
     rawData.postId = parseInt(id, 10);
-    console.log('rawData: ', rawData);
     const addedPost = await commentService.addCommentToPost(rawData);
 
     try {

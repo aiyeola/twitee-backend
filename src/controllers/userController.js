@@ -91,4 +91,10 @@ export default class User {
       return next(error);
     }
   };
+
+  static logout = (req, res) => {
+    SessionManager.destroyToken(req.user);
+
+    return Response.customResponse(res, 200, 'user logged out successfully');
+  };
 }
