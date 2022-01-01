@@ -19,7 +19,7 @@
       "url": "http://localhost:4000/api/v1"
     },
     {
-      "url": "https://mynyscapp-backend.herokuapp.com/api/v1"
+      "url": "https://aiyeola-twitee-backend.herokuapp.com/api/v1"
     }
   ],
   "consumes": ["application/json"],
